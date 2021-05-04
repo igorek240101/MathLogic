@@ -1,0 +1,12 @@
+D:\GitHub\MathLogic\MathLogic\MathLogic\bin\Debug\MathLogic.exe.config
+D:\GitHub\MathLogic\MathLogic\MathLogic\bin\Debug\MathLogic.exe
+D:\GitHub\MathLogic\MathLogic\MathLogic\bin\Debug\MathLogic.pdb
+D:\GitHub\MathLogic\MathLogic\MathLogic\obj\Debug\MathLogic.Properties.Resources.resources
+D:\GitHub\MathLogic\MathLogic\MathLogic\obj\Debug\MathLogic.csproj.GenerateResource.cache
+D:\GitHub\MathLogic\MathLogic\MathLogic\obj\Debug\MathLogic.csproj.CoreCompileInputs.cache
+D:\GitHub\MathLogic\MathLogic\MathLogic\obj\Debug\MathLogic.exe
+D:\GitHub\MathLogic\MathLogic\MathLogic\obj\Debug\MathLogic.pdb
+D:\GitHub\MathLogic\MathLogic\MathLogic\bin\Debug\Logic.dll
+D:\GitHub\MathLogic\MathLogic\MathLogic\bin\Debug\Logic.pdb
+D:\GitHub\MathLogic\MathLogic\MathLogic\obj\Debug\MathLogic.csprojAssemblyReference.cache
+D:\GitHub\MathLogic\MathLogic\MathLogic\obj\Debug\MathLogic.csproj.CopyComplete

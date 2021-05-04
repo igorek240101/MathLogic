@@ -1,0 +1,6 @@
+D:\GitHub\MathLogic\MathLogic\Logic\bin\Debug\Logic.dll
+D:\GitHub\MathLogic\MathLogic\Logic\bin\Debug\Logic.pdb
+D:\GitHub\MathLogic\MathLogic\Logic\obj\Debug\Logic.csproj.CoreCompileInputs.cache
+D:\GitHub\MathLogic\MathLogic\Logic\obj\Debug\Logic.dll
+D:\GitHub\MathLogic\MathLogic\Logic\obj\Debug\Logic.pdb
+D:\GitHub\MathLogic\MathLogic\Logic\obj\Debug\Logic.csprojAssemblyReference.cache
