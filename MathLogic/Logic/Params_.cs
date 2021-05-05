@@ -60,7 +60,7 @@ namespace Logic
                                     }
                                     else
                                     {
-                                        return new if_(element.Value.Item1.Replace("α", input.Substring(0, i)).Replace("ω", input.Substring(i + element.Key.Length + 1)));
+                                        return new if_(element.Value.Item1.Replace("α", input.Substring(0, i+1)).Replace("ω", input.Substring(i + element.Key.Length + 1)));
                                     }
                                 }
                             }
@@ -75,9 +75,9 @@ namespace Logic
                 if (input.Length >= 2 && input[1] == '?') return new if_(input);
                 foreach (var element in transformation)
                 {
-                    if(element.Value.Item2 == 1 && input.StartsWith(element.Value.Item1))
+                    if(element.Value.Item2 == 1 && input.StartsWith(element.Key))
                     {
-                        return new if_(element.Value.Item1.Replace("α", input.Substring(element.Key.Length-1)));
+                        return new if_(element.Value.Item1.Replace("α", input.Substring(element.Key.Length, input.Length - element.Key.Length)));
                     }
                     else
                     {

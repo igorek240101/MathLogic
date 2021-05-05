@@ -37,7 +37,9 @@ namespace Logic
                         {
                             if (input[pos + 1] == consts[i])
                             {
-                                tasks[i] = ValueAsync(input[pos] + "");
+                                string s1 = input[pos] + "";
+                                tasks[i] = new Task<(Params_, string)>(() => ValueAsync(s1));
+                                tasks[i].Start();
                                 pos += 2;
                                 continue;
                             }
@@ -54,14 +56,18 @@ namespace Logic
                                 {
                                     if (j + 1 == input.Length) throw new Exception();
                                     if (input[j + 1] != consts[i] || j + 2 == input.Length) throw new Exception("Некоректный синтаксис");
-                                    tasks[i] = ValueAsync(input.Substring(pos, j - 1));
+                                    string s2 = input.Substring(pos, j + 1-pos);
+                                    tasks[i] = new Task<(Params_, string)>(() => ValueAsync(s2));
+                                    tasks[i].Start();
                                     pos = j + 2;
                                     break;
                                 }
                             }
                         }
                     }
-                    tasks[2] = ValueAsync(input.Substring(pos));
+                    string s3 = input.Substring(pos);
+                    tasks[2] = new Task<(Params_, string)>(()=>ValueAsync(s3));
+                    tasks[2].Start();
                     Task.WaitAll(tasks);
                     ask = tasks[0].Result.Item1;
                     output = tasks[0].Result.Item2.Length > 1 ? "(" + tasks[0].Result.Item2 + ")?" : tasks[0].Result.Item2 + "?";
@@ -74,12 +80,12 @@ namespace Logic
             }
         }
 
-        public static async Task<(Params_,string)> ValueAsync(string input)
+        public static (Params_,string) ValueAsync(string input)
         {
             Console.WriteLine("Начата обработка: " + input);
-            Params_ params_ = await Task.Run(()=>Typer(input));
+            Params_ params_ = Typer(input);
             Console.WriteLine("Получен params из: " + input);
-            return (params_, await Task.Run(()=>params_.Value));
+            return (params_, params_.Value);
         }
     }
 }

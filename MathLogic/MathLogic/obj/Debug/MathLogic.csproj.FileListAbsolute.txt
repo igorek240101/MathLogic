@@ -10,3 +10,4 @@ D:\GitHub\MathLogic\MathLogic\MathLogic\bin\Debug\Logic.dll
 D:\GitHub\MathLogic\MathLogic\MathLogic\bin\Debug\Logic.pdb
 D:\GitHub\MathLogic\MathLogic\MathLogic\obj\Debug\MathLogic.csprojAssemblyReference.cache
 D:\GitHub\MathLogic\MathLogic\MathLogic\obj\Debug\MathLogic.csproj.CopyComplete
+D:\GitHub\MathLogic\MathLogic\MathLogic\obj\Debug\MathLogic.Form1.resources

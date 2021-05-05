@@ -16,6 +16,7 @@ namespace MathLogic
         public Form1()
         {
             InitializeComponent();
+            Invoke.BackgroundImage = Image.FromFile("base.png");
             Form1_SizeChanged(this, new EventArgs());
         }
 
@@ -31,7 +32,7 @@ namespace MathLogic
 
         private void Invoke_Click(object sender, EventArgs e)
         {
-            Params_ root = Params_.Typer(input.Text);
+            Params_ root = Params_.Typer(input.Text.Replace(" ", "").Replace("\r","").Replace("\n", ""));
             output.Text = root.Value;
         }
     }
