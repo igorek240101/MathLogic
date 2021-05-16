@@ -301,5 +301,15 @@ namespace Logic
             output = "(" + ask.Value + ")?(" + this.true_.Value + "):(" + this.false_.Value + ")";
             return true;
         }
+
+        public override bool Truer()
+        {
+            return true_.Truer();
+        }
+
+        public override bool Falser()
+        {
+            return false_.Falser();
+        }
     }
 }

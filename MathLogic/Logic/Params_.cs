@@ -58,6 +58,10 @@ namespace Logic
 
         public abstract bool RemoveConst(List<(char, char)> know);
 
+        public abstract bool Truer();
+
+        public abstract bool Falser();
+
         public static Params_ Typer(string input, if_ params_)
         {
             if (input.Length == 0) throw new Exception("Передана пустая строка");

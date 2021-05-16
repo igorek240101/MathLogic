@@ -73,10 +73,17 @@ namespace Logic
             }
             return true;
         }
-    }
 
-    public class NotChangeException : Exception
-    {
+        public override bool Truer()
+        {
+            if (input[0] != '0') return true;
+            return false;
+        }
 
+        public override bool Falser()
+        {
+            if (input[0] != '1') return true;
+            return false;
+        }
     }
 }

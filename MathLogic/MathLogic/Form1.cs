@@ -65,6 +65,7 @@ namespace MathLogic
             Comparetor.Enabled = false;
             Equivalence.Enabled = false;
             RemoveConst.Enabled = false;
+            Text = "";
         }
 
         private void IferInvoke_Click(object sender, EventArgs e)
@@ -76,6 +77,8 @@ namespace MathLogic
             Equivalence.Enabled = false;
             RemoveConst.Enabled = false;
             ReplaceRepeat.Enabled = true;
+            if (Params_.root.Truer() && Params_.root.Falser()) Text = "Выразится";
+            else Text = "Не выразится";
         }
 
 
