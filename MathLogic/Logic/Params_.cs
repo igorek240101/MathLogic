@@ -10,11 +10,21 @@ namespace Logic
 {
     public abstract class Params_
     {
+        public static Params_ root;
+
         protected string input;
 
-        public Params_(string input)
+        public if_ parrent;
+
+        public Params_(string input, if_ params_)
         {
             this.input = input;
+            parrent = params_;
+        }
+
+        public Params_()
+        {
+
         }
 
         public static readonly Dictionary<string, (string, int)> transformation;
@@ -32,10 +42,26 @@ namespace Logic
 
         public abstract string Value { get; }
 
-        public static Params_ Typer(string input)
+        public abstract void Ifer();
+
+        public abstract void DownReplace(Params_ true_, Params_ false_);
+
+        public abstract Params_ Clone(if_ parrent);
+
+        public abstract void ReplaceRepeatToConst(List<(char, char)> know);
+
+        public abstract void RemoveConstFromIf();
+
+        public abstract void Comparator();
+
+        public abstract void Equivalence();
+
+        public abstract bool RemoveConst(List<(char, char)> know);
+
+        public static Params_ Typer(string input, if_ params_)
         {
             if (input.Length == 0) throw new Exception("Передана пустая строка");
-            if (input.Length == 1) return new Value_(input);
+            if (input.Length == 1) return new Value_(input, params_);
             if (input[0] == '(')
             {
                 int len = 1;
@@ -47,8 +73,8 @@ namespace Logic
                         len--;
                         if (len == 0)
                         {
-                            if (i + 1 == input.Length) return Typer(input.Substring(1, input.Length - 2));
-                            if (input[i + 1] == '?') return new if_(input);
+                            if (i + 1 == input.Length) return Typer(input.Substring(1, input.Length - 2), params_);
+                            if (input[i + 1] == '?') return new if_(input, params_);
                             string beginOP = input.Substring(i + 1, input.Length-i-1);
                             foreach(var element in transformation)
                             {
@@ -56,11 +82,11 @@ namespace Logic
                                 {
                                     if (element.Value.Item2 == 2)
                                     {
-                                        return new if_(element.Value.Item1.Replace("α", input.Substring(0, i)));
+                                        return new if_(element.Value.Item1.Replace("α", input.Substring(0, i)), params_);
                                     }
                                     else
                                     {
-                                        return new if_(element.Value.Item1.Replace("α", input.Substring(0, i+1)).Replace("ω", input.Substring(i + element.Key.Length + 1)));
+                                        return new if_(element.Value.Item1.Replace("α", input.Substring(0, i+1)).Replace("ω", input.Substring(i + element.Key.Length + 1)), params_);
                                     }
                                 }
                             }
@@ -72,12 +98,12 @@ namespace Logic
             }
             else
             {
-                if (input.Length >= 2 && input[1] == '?') return new if_(input);
+                if (input.Length >= 2 && input[1] == '?') return new if_(input, params_);
                 foreach (var element in transformation)
                 {
                     if(element.Value.Item2 == 1 && input.StartsWith(element.Key))
                     {
-                        return new if_(element.Value.Item1.Replace("α", input.Substring(element.Key.Length, input.Length - element.Key.Length)));
+                        return new if_(element.Value.Item1.Replace("α", input.Substring(element.Key.Length, input.Length - element.Key.Length)), params_);
                     }
                     else
                     {
@@ -85,11 +111,11 @@ namespace Logic
                         {
                             if (element.Value.Item2 == 2)
                             {
-                                return new if_(element.Value.Item1.Replace('α', input[0]));
+                                return new if_(element.Value.Item1.Replace('α', input[0]), params_);
                             }
                             else
                             {
-                                return new if_(element.Value.Item1.Replace('α', input[0]).Replace("ω", input.Substring(element.Key.Length + 1)));
+                                return new if_(element.Value.Item1.Replace('α', input[0]).Replace("ω", input.Substring(element.Key.Length + 1)), params_);
                             }
                         }
                     }
